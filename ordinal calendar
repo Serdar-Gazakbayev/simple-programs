@@ -1,0 +1,42 @@
+#creating the main function
+def func(day, month, year):
+  # define a leap year
+  if year%400==0:
+    leap = True
+  elif year%100==0:
+    leap = False
+  elif year%4==0:
+    leap = True
+  else:
+    leap = False
+
+  # variable for storing the summation of days
+  sum = 0
+  # determining the number of days in a month and summing up the days
+  for i in range(1,month):
+    if i == 4 or i == 6 or i == 9 or i == 11:
+      count_day = 30
+    elif i == 1 or i == 3 or i == 5 or i == 7 or i == 8 or i == 10 or i == 12:
+      count_day = 31
+    elif i == 2:
+      if leap:
+        count_day = 29
+      else:
+        count_day = 28
+    sum += count_day
+  ord_num = sum + day
+  return ord_num
+
+# function call
+def main():
+  year = int(input('enter the year (for example, 2020): '))
+  month = int(input('enter the year (for example, 2): '))
+  day = int(input('enter the year (for example, 3): '))
+  return func(day, month, year)
+
+print('Ordinal number of the entered date: %i' % main())
+
+# The program allows you to output the ordinal number of the date entered by the user:
+# First of all, we determine, whether the year is a leap year
+# Next, we determine the number of days in each month. Summing up the number of days before the month entered by the user
+# And calling the function
